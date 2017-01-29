@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>QuizMaster</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>QuizMaster</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!--bootstrap4 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to "Quiz Master", "#", class: "navbar-brand" %>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do %>
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <%= msg %>
+    <% end %>
+  <% end %>
+  <div class="row">
+    <main class="col-sm-12 pt-3">
+      <%= yield %>
+    </main>
+  </div>
+</div>
+</body>
 </html>

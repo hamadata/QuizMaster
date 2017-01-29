@@ -1,14 +1,18 @@
-<p id="notice"><%= notice %></p>
+<h1>Question ID: <%= @question.id %></h1>
 
-<p>
-  <strong>Body:</strong>
+<dl>
+  <dd>Body:</dd>
+  <dt>
   <%= @question.body %>
-</p>
+  </dt>
+</dl>
 
-<p>
-  <strong>Answer:</strong>
-  <%= @question.answer %>
-</p>
+<dl>
+  <dd>Answer:</dd>
+  <dt>
+    <%= @question.answer %>
+  </dt>
+</dl>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
