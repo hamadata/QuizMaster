@@ -12,7 +12,7 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td class="col-md-4"><%= question.body %></td>
+        <td class="col-md-4"><%= raw Truncato.truncate question.body, max_length: 80 %></td>
         <td class="col-md-4"><%= question.answer %></td>
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
