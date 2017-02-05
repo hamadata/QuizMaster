@@ -60,3 +60,6 @@ end
 
 gem 'truncato'
 gem "react_on_rails", "~> 6"
+
+gem 'mini_racer', platforms: :ruby
+gem 'foreman'
