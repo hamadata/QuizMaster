@@ -59,3 +59,4 @@ group :test do
 end
 
 gem 'truncato'
+gem "react_on_rails", "~> 6"
