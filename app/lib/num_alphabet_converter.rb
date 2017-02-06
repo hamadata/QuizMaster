@@ -14,10 +14,10 @@ module NumAlphabetConverter
       three_digit = val % 1000
       val = (val - val % 1000) / 1000
       result.push self.conv_3_digit(three_digit)
-      result.push self.llion(idx) 
+      result.push self.llion(idx) if val != 0 && (val % 1000) != 0
       idx = idx + 1
     end
-    puts result.reverse.join(' ') + "|"
+    puts result.reject{ |d| d == '' }.reverse.join(' ') 
   end
 
   def self.llion(index)
