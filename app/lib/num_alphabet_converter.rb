@@ -17,7 +17,7 @@ module NumAlphabetConverter
       result.push self.llion(idx) if val != 0 && (val % 1000) != 0
       idx = idx + 1
     end
-    puts result.reject{ |d| d == '' }.reverse.join(' ') 
+    result.reject{ |d| d == '' }.reverse.join(' ') 
   end
 
   def self.llion(index)
@@ -93,12 +93,3 @@ module NumAlphabetConverter
 
 end
 
-puts NumAlphabetConverter.convert(100)
-puts NumAlphabetConverter.convert(1111)
-puts NumAlphabetConverter.convert(111111)
-puts NumAlphabetConverter.convert(100000)
-puts NumAlphabetConverter.convert(1_000_000)
-puts NumAlphabetConverter.convert(1_010_100)
-puts NumAlphabetConverter.convert(1_000_000_000)
-puts NumAlphabetConverter.convert(1232042020)
-puts NumAlphabetConverter.convert(1232042020)
