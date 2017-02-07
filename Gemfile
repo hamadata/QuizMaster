@@ -52,10 +52,14 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'rspec-rails', '~> 3.5'
 group :test do
-  gem 'rspec-rails', '~> 3.5'
   gem 'rails-controller-testing'
   gem 'factory_girl_rails'
 end
 
 gem 'truncato'
+gem "react_on_rails", "~> 6"
+
+gem 'mini_racer', platforms: :ruby
+gem 'foreman'
