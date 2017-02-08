@@ -21,3 +21,5 @@
 .byebug_history
 # Ignore RubyMine files
 .idea
+
+.node_modules
