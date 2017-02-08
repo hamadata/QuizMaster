@@ -19,7 +19,6 @@ RSpec.describe Question, type: :model do
       expect(@q0.next_question).to eq(@q1)
     end
 
-
     it 'last element, return nil' do
       expect(@q1.next_question).to eq(nil)
     end

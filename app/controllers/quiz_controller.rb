@@ -5,9 +5,9 @@ class QuizController < ApplicationController
   end
 
   def update
-    @q = Question.find_by!(id: params[:id])
-    res = @q.correct?(JSON.parse(params[:json])['answer'])
-    render json: { result: res }, status: 200
+    @q = Question.find_by(id: params[:id])
+    res = @q.correct?(params[:answer])
+    render json: { result: res, link: @q.next_question.present? ? quiz_path(@q.next_question) : 'finished' }, status: 200
   end
 
 end

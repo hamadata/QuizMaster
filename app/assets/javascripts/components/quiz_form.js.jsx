@@ -1,26 +1,36 @@
 var QuizForm = React.createClass({
 
     getInitialState: function () {
-        return({
-           body: this.props.body
+        return ({
+            id: this.props.id,
+            body: this.props.body,
+            result: undefined,
+            value: null,
+            link: undefined
         });
     },
 
-    handleSubmit: function(event) {
+    handleSubmit: function (event) {
+        var _this = this;
         event.preventDefault();
-        var answer =
+        var answer = this.state.value.trim();
         $.ajax({
-            url: "id",
+            url: "/quiz/"+this.props.id,
             dataType: 'json',
-            type: 'POST',
-            data: answer,
-            success: function(data) {
-                this.setState({data: data})
+            type: 'PATCH',
+            data: {answer: answer},
+            success: function (data) {
+                _this.setState({result: data.result});
+                _this.setState({link: data.link})
             },
-            error: function(xhr, status, err) {
+            error: function (xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
         });
+    },
+
+    handleChange: function (event) {
+        this.setState({value: event.target.value});
     },
 
     render: function () {
@@ -31,14 +41,23 @@ var QuizForm = React.createClass({
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label>Answer</label>
-                        <input type="textarea" className="form-control" placeholder="write answer here" />
+                        <input type="textarea" className="form-control" placeholder="write answer here"
+                               onChange={this.handleChange}/>
                     </div>
-                    <div className="alert alert-success">Your answer is correct!</div>
-                    <div className="alert alert-danger">Your answer is not correct!</div>
-                    <button className="btn btn-primary">Submit</button>
+                    { (this.state.result !== undefined) ? <Result result={this.state.result} /> : null }
+                    { (this.state.result !== undefined) ? <a href={this.state.link} className="btn btn-primary">Next</a> : <button className="btn btn-primary">Submit</button> }
                 </form>
             </div>
         );
     }
 
 });
+
+var Result = React.createClass({
+    render: function () {
+        return (
+            this.props.result ? <div className="alert alert-success">Your answer is correct!</div> : <div className="alert alert-danger">Your answer is incorrect!</div>
+        );
+    }
+});
+
