@@ -3,5 +3,16 @@
   "description": "Quiz Master Sample Application",
   "repository": "https://github.com/hamadata/QuizMaster",
   "logo": "https://pbs.twimg.com/profile_images/378800000693288746/4ce34f10b8fe242687cb74832393074d_400x400.jpeg",
-  "keywords": ["rails"]
+  "keywords": [
+    "rails"
+  ],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate db:seed"
+  },
+  "env": {
+    "RAILS_ENV": "production",
+  },
+  "addons": [
+    "heroku-postgresql"
+  ]
 }
