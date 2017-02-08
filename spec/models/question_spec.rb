@@ -32,7 +32,7 @@ RSpec.describe Question, type: :model do
     end
 
     it 'match, return true' do
-      expect(@q.correct?(@answer)).to be_truthy
+      expect(@q.correct?('answer one twenty-three')).to be_truthy
     end
 
     it 'not match, return false' do
