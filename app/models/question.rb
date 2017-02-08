@@ -2,6 +2,10 @@ class Question < ApplicationRecord
 
   validates_presence_of :body, :answer
 
+  def self.first_question
+    Question.order("created_at ASC").limit(1).first
+  end
+
   def next_question
     Question.order("created_at ASC").where('created_at > ?', self.created_at).limit(1).first
   end
