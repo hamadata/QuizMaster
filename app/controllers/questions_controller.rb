@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+
+  before_action :basic_pass
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   # GET /questions
@@ -62,13 +64,22 @@ class QuestionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_question
-      @question = Question.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_question
+    @question = Question.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def question_params
-      params.require(:question).permit(:body, :answer)
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def question_params
+    params.require(:question).permit(:body, :answer)
+  end
+
+  def basic_pass
+    if %w(development production).include?(Rails.env)
+      authenticate_or_request_with_http_basic do |user, pass|
+        user == 'quiz' && pass == 'master'
+      end
     end
+  end
+
 end
