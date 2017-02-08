@@ -7,7 +7,7 @@ class Question < ApplicationRecord
   end
 
   def correct?(answer)
-    answer == self.answer
+    answer.gsub(/[0-9]+/){ |match| NumAlphabetConverter.convert(match.to_i) } == self.answer.gsub(/[0-9]+/){ |match| NumAlphabetConverter.convert(match.to_i) }
   end
 
 end

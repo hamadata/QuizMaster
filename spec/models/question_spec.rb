@@ -19,7 +19,6 @@ RSpec.describe Question, type: :model do
       expect(@q0.next_question).to eq(@q1)
     end
 
-
     it 'last element, return nil' do
       expect(@q1.next_question).to eq(nil)
     end
@@ -32,7 +31,7 @@ RSpec.describe Question, type: :model do
     end
 
     it 'match, return true' do
-      expect(@q.correct?(@answer)).to be_truthy
+      expect(@q.correct?('answer one twenty-three')).to be_truthy
     end
 
     it 'not match, return false' do

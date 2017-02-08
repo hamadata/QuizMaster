@@ -2,6 +2,6 @@
 FactoryGirl.define do
   factory :question, :class => 'Question' do
     body 'test body of question'
-    answer 'test answer'
+    answer 'answer 1 23'
   end
 end
