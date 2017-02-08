@@ -1,27 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+This is Quiz Master, a Rails5 application.
 
 * Ruby version
-  - tested on 2.3.1
+
+tested on 2.3.1
 
 * System dependencies
-  - SQLite3 on developmenet
 
-* Configuration
+SQLite3 on developmenet, PostgreSQL on production
+
 
 * Database creation
 
+```
+rails db:create
+```
+
 * Database initialization
 
-* How to run the test suite
-  - rspec
+```
+rails db:migrate; rails db:
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+* How to run the test suite
+
+```
+rspec
+```
+
 
 * Deployment instructions
-  [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+You can deploy to heroku.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
