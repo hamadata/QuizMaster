@@ -38,4 +38,4 @@ You can deploy to heroku.
 
 * Demo
 
-https://hamada-quiz-master.herokuapp.com/
+https://hamada-quiz-master.herokuapp.com/ (user: quiz, password: master for basic auth.)
